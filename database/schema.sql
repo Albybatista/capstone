@@ -1,20 +1,20 @@
 INSERT INTO
   notes
-    ( dated, title, repo, fromfile, lines, comments)
+    ( dated, title, codeLanguage, codeBlock, comments)
 VALUES
-    ("08/20/2020", "React Lesson", "w10d05 folder", "app.js", "14-20", "this is how we render a basic component");
+    ('08/20/2020', 'React Lesson', 'javascript', 'class App extends React.Component { }', 'this is how we set the class of a basic component where we then add a render inside the curly braces');
 INSERT INTO
   notes
-    ( dated, title, repo, fromfile, lines, comments)
+    ( dated, title, codeLanguage, codeBlock, comments)
 VALUES
-    ("08/20/2020", "React Lesson", "w10d05 folder", "app.js", "14-20", "this is how we render a basic component");
+    ('08/20/2020', 'React Lesson', 'javascript', 'class App extends React.Component {}', 'this is how we set the class of a basic component where we then add a render inside the curly braces');
     INSERT INTO
   notes
-    ( dated, title, repo, fromfile, lines, comments)
+    ( dated, title, codeLanguage, codeBlock, comments)
 VALUES
-    ("08/20/2020", "React Lesson", "w10d05 folder", "app.js", "14-20", "this is how we render a basic component");
+    ('08/20/2020', 'React Lesson', 'javascript', 'class App extends React.Component {}', 'this is how we set the class of a basic component where we then add a render inside the curly braces');
     INSERT INTO
   notes
-    ( dated, title, repo, fromfile, lines, comments)
+    ( dated, title, codeLanguage, codeBlock, comments)
 VALUES
-    ("08/20/2020", "React Lesson", "w10d05 folder", "app.js", "14-20", "this is how we render a basic component");
+    ('08/20/2020', 'React Lesson', 'javascript', 'class App extends React.Component {}', 'this is how we set the class of a basic component where we then add a render inside the curly braces');

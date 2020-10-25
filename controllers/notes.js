@@ -1,22 +1,36 @@
+// =======================================
+//              DEPENDENCIES
+// =======================================
 const express = require('express');
-const router = express.Router();
+const scriven = express.scriven();
 const postgres = require('../postgres.js');
-
-router.get('/', (req, res) => {
+    
+// =================
+//  INDEX/GET ROUTE
+// =================
+scriven.get('/', (req, res) => {
     postgres.query('SELECT * FROM notes ORDER BY id ASC;', (err, results) => {
         res.json(results.rows)
+        
     });
 });
 
-router.post('/', (req, res) => {
-    postgres.query(`INSERT INTO notes (name, age) VALUES ('${req.body.name}', ${req.body.age})`, (err, results) => {
+// ===================
+//  CREATE/POST ROUTE
+// ===================
+scriven.post('/', (req, res) => {
+    postgres.query(`INSERT INTO notes (dated, title, codeLanguage, codeBlock, comments) VALUES ('${req.body.dated}', '${req.body.title}', '${req.body.codeLanguage}', 
+    '${req.body.codeBlock}', '${req.body.comments}'`, (err, results) => {
         postgres.query('SELECT * FROM notes ORDER BY id ASC;', (err, results) => {
             res.json(results.rows)
         });
     })
 });
 
-router.delete('/:id', (req, res) => {
+// ==============
+//  DELETE ROUTE
+// ==============
+scriven.delete('/:id', (req, res) => {
     postgres.query(`DELETE FROM notes WHERE id = ${req.params.id};`, (err, results) => {
         postgres.query('SELECT * FROM notes ORDER BY id ASC;', (err, results) => {
             res.json(results.rows)
@@ -24,12 +38,16 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-router.put('/:id', (req, res) => {
-    postgres.query(`UPDATE notes SET name = '${req.body.name}', AGE = ${req.body.age} WHERE id = ${req.params.id}`, (err, results) => {
+// ==================
+//  UPDATE/PUT ROUTE
+// ==================
+scriven.put('/:id', (req, res) => {
+    postgres.query(`UPDATE notes SET dated = '${req.body.dated}', title = '${req.body.title}', codeLanguage = '${req.body.codeLanguage}', codeBlock = '${req.body.codeBlock}', comments = '${req.body.comments}' WHERE id = ${req.params.id}`, (err, results) => {
         postgres.query('SELECT * FROM notes ORDER BY id ASC;', (err, results) => {
             res.json(results.rows)
         });
     })
 });
 
-module.exports = router;
+
+module.exports = scriven;
