@@ -22,14 +22,14 @@ postgres.connect();
 // =======================================
 //              LISTENER
 // =======================================
-// app.listen(process.env.PORT || 3100, () => {
-//     console.log('listening on port...');
-// })
+app.listen(process.env.PORT || 3000, () => {
+    console.log('listening on port...');
+})
 
 // app.listen(3100, () => {
 //     console.log('listening on port... ');
 // });
 
-// app.listen(54321, () => {
+// app.listen(5432, () => {
 //     console.log('listening on port... ');
 // });

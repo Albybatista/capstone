@@ -141,13 +141,14 @@ class App extends React.Component {
     // SHOW EVERYTHING ON THE WEBPAGE LIKE SO -- 
     // ==========================================
     render = () => {
-        return <div>
+        return (
+        <div>
             <h2>Create Note</h2>
             <form onSubmit={this.createNote}>
                 <input onKeyUp={this.newNoteDated} type="text" placeholder="date" /><br/>
                 <input onKeyUp={this.newNoteTitle} type="text" placeholder="title" /><br/>
                 <input onKeyUp={this.newNoteCodeLanguage} type="text" placeholder="code language" /><br/>
-                <input onKeyUp={this.newNoteCodeBlock} type="<code>" placeholder="code block" /><br/>
+                <input onKeyUp={this.newNoteCodeBlock} type="text" placeholder="code block" /><br/>
                 <input onKeyUp={this.newNoteComments} type="text" placeholder="note" /><br/>
                 <input type="submit" value="Create Note" />
             </form>
@@ -179,7 +180,7 @@ class App extends React.Component {
                     )
                 }
             </ul>
-        </div>
+        </div>)
     }
 
     }

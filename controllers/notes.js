@@ -2,7 +2,7 @@
 //              DEPENDENCIES
 // =======================================
 const express = require('express');
-const scriven = express.scriven();
+const scriven = express.Router();
 const postgres = require('../postgres.js');
     
 // =================
