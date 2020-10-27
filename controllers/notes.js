@@ -4,7 +4,22 @@
 const express = require('express');
 const scriven = express.Router();
 const postgres = require('../postgres.js');
-    
+
+
+// ===================
+//  CREATE/POST ROUTE
+// ===================
+scriven.post('/', (req, res) => {
+    console.log('post route');
+    postgres.query(`INSERT INTO notes (dated, title, codeLanguage, codeBlock, comments) VALUES ('${req.body.dated}', '${req.body.title}','${req.body.codeLanguage}', '${req.body.codeBlock}', '${req.body.comments}')`, (err, results) => {
+        postgres.query('SELECT * FROM notes ORDER BY id ASC;', (err, results) => {
+            res.json(results.rows)
+            console.log(results);
+        });
+    })
+});
+
+
 // =================
 //  INDEX/GET ROUTE
 // =================
@@ -15,17 +30,9 @@ scriven.get('/', (req, res) => {
     });
 });
 
-// ===================
-//  CREATE/POST ROUTE
-// ===================
-scriven.post('/', (req, res) => {
-    postgres.query(`INSERT INTO notes (dated, title, codeLanguage, codeBlock, comments) VALUES ('${req.body.dated}', '${req.body.title}', '${req.body.codeLanguage}', 
-    '${req.body.codeBlock}', '${req.body.comments}'`, (err, results) => {
-        postgres.query('SELECT * FROM notes ORDER BY id ASC;', (err, results) => {
-            res.json(results.rows)
-        });
-    })
-});
+
+
+
 
 // ==============
 //  DELETE ROUTE

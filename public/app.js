@@ -23,7 +23,7 @@ class App extends React.Component {
             {
                 dated: this.state.newNoteDated,
                 title: this.state.newNoteTitle,
-                codeLanguage: this.state.newCodeLanguage,
+                codeLanguage: this.state.newNoteCodeLanguage,
                 codeBlock: this.state.newNoteCodeBlock,
                 comments: this.state.newNoteComments,
             }
@@ -32,8 +32,11 @@ class App extends React.Component {
                 this.setState({
                     notes: response.data
                 })
+                console.log(response.data);
             }
+            
         )
+        
     }
 
     // ============================
@@ -49,7 +52,7 @@ class App extends React.Component {
             newNoteTitle: event.target.value
         });
     }
-    addNotecodeLanguage = (event) => {
+    addNoteCodeLanguage = (event) => {
         this.setState({
             newNoteCodeLanguage: event.target.value
         });
@@ -63,6 +66,7 @@ class App extends React.Component {
         this.setState({
             newNoteComments: event.target.value
         });
+        console.log(event.target.value);
     }
 
 
@@ -125,6 +129,7 @@ class App extends React.Component {
         this.setState({
             updateNoteCodeLanguage: event.target.value
         });
+        console.log(event.target.value);
     }
     changedNoteCodeBlock = (event) => {
         this.setState({
@@ -141,16 +146,22 @@ class App extends React.Component {
     // SHOW EVERYTHING ON THE WEBPAGE LIKE SO -- 
     // ==========================================
     render = () => {
-        return (
-        <div>
+        return(
+         <div>
             <h2>Create Note</h2>
             <form onSubmit={this.createNote}>
-                <input onKeyUp={this.newNoteDated} type="text" placeholder="date" /><br/>
-                <input onKeyUp={this.newNoteTitle} type="text" placeholder="title" /><br/>
-                <input onKeyUp={this.newNoteCodeLanguage} type="text" placeholder="code language" /><br/>
-                <input onKeyUp={this.newNoteCodeBlock} type="text" placeholder="code block" /><br/>
-                <input onKeyUp={this.newNoteComments} type="text" placeholder="note" /><br/>
-                <input type="submit" value="Create Note" />
+                <input onKeyUp={this.addNoteDated} type="text" /><br/>
+                &nbsp;
+                <input onKeyUp={this.addNoteTitle} type="text" />
+                &nbsp; 
+                &nbsp;
+                <input onKeyUp={this.addNoteCodeLanguage} type="text" /><br/>
+                
+                <input onKeyUp={this.addNoteCodeBlock} type="text" />
+                
+                <br/>
+                <input onKeyUp={this.addNoteComments} type="text" /><br/>
+                <input type="submit" value="Create Note"/>
             </form>
             <h2>List of notes</h2>
             <ul>
@@ -158,20 +169,22 @@ class App extends React.Component {
                     this.state.notes.map(
                         (thisNote, index) => {
                             return <li key={index}>
-
-                                {/* ?? */}
-                                {thisNote.dated}: {thisNote.title}
-                                {thisNote.codeLanguage}: {thisNote.codeBlock}: {thisNote.comments}
+                                
+                                
+                            Dated: {thisNote.dated} <br/>
+                            Title: {thisNote.title} <br/>
+                            Language: {thisNote.codelanguage} <br/>
+                            Block: {thisNote.codeblock} <br/>
+                            Comments: {thisNote.comments} <br/>
 
                                 <button value={thisNote.id} onClick={this.deleteNote}>
                                     Delete
                                 </button>
-
                                 <form id={thisNote.id} onSubmit={this.updateNote}>
                                     <input onKeyUp={this.changedNoteDated} type="text" placeholder="date"/><br/>
                                     <input onKeyUp={this.changedNoteTitle} type="text" placeholder="title"/><br/>
                                     <input onKeyUp={this.changedNoteCodeLanguage} type="text" placeholder="language"/><br/>
-                                    <input onKeyUp={this.changedNoteCodeBlock} type="text" placeholder="code block"/><br/>
+                                    <input onKeyUp={this.changedNoteCodeBlock} type="text" placeholder="Code"/><br/>
                                     <input onKeyUp={this.changedNoteComments} type="text" placeholder="comments"/><br/>
                                     <input type="submit" value="Update Note"/>
                                 </form>
@@ -180,10 +193,12 @@ class App extends React.Component {
                     )
                 }
             </ul>
-        </div>)
+            
+        </div>
+        )
     }
-
-    }
+        
+}
 
 ReactDOM.render(
     <App></App>, 

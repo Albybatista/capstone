@@ -7,14 +7,14 @@ const postgres = require('./postgres.js');
 const notesController = require('./controllers/notes.js');
 const cors = require('cors');
 
+
 // =======================================
 //              MIDDLEWARE
 // =======================================
 app.use(express.json());
 app.use(express.static('public'))
-app.use('/', notesController);
+app.use('/notes', notesController);
 app.use(cors());
-
 
 postgres.connect();
 
