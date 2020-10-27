@@ -18,6 +18,7 @@ class App extends React.Component {
     // =========
     createNote = (event) => {
         event.preventDefault();
+        event.target.reset();
         axios.post(
             '/notes',
             {
@@ -88,6 +89,7 @@ class App extends React.Component {
     // =========
     updateNote = (event) => {
         event.preventDefault();
+        event.target.reset();
         const id = event.target.getAttribute('id');
         axios.put(
             '/notes/' + id,
@@ -156,44 +158,41 @@ class App extends React.Component {
                 &nbsp; 
                 &nbsp;
                 <input onKeyUp={this.addNoteCodeLanguage} type="text" /><br/>
-                
                 <input onKeyUp={this.addNoteCodeBlock} type="text" />
-                
                 <br/>
                 <input onKeyUp={this.addNoteComments} type="text" /><br/>
                 <input type="submit" value="Create Note"/>
             </form>
             <h2>List of notes</h2>
-            <ul>
                 {
                     this.state.notes.map(
                         (thisNote, index) => {
-                            return <li key={index}>
-                                
-                                
-                            Dated: {thisNote.dated} <br/>
-                            Title: {thisNote.title} <br/>
-                            Language: {thisNote.codelanguage} <br/>
-                            Block: {thisNote.codeblock} <br/>
-                            Comments: {thisNote.comments} <br/>
+                            return <div>
+            
+                            <strong>Date: </strong>{thisNote.dated} <br/>
+                            <strong>Title: </strong>{thisNote.title} <br/>
+                            <strong>Language: </strong>{thisNote.codelanguage} <br/>
+                            <strong>Code Block: </strong>
+                            <code>{thisNote.codeblock}</code> 
+                            <br/>
+                            <strong>Notes: </strong>{thisNote.comments} <br/>
 
                                 <button value={thisNote.id} onClick={this.deleteNote}>
                                     Delete
                                 </button>
                                 <form id={thisNote.id} onSubmit={this.updateNote}>
-                                    <input onKeyUp={this.changedNoteDated} type="text" placeholder="date"/><br/>
-                                    <input onKeyUp={this.changedNoteTitle} type="text" placeholder="title"/><br/>
-                                    <input onKeyUp={this.changedNoteCodeLanguage} type="text" placeholder="language"/><br/>
+                                    <input onKeyUp={this.changedNoteDated} type="text" placeholder="Date"/><br/>
+                                    <input onKeyUp={this.changedNoteTitle} type="text" placeholder="Title"/><br/>
+                                    <input onKeyUp={this.changedNoteCodeLanguage} type="text" placeholder="Language"/><br/>
                                     <input onKeyUp={this.changedNoteCodeBlock} type="text" placeholder="Code"/><br/>
-                                    <input onKeyUp={this.changedNoteComments} type="text" placeholder="comments"/><br/>
-                                    <input type="submit" value="Update Note"/>
+                                    <input onKeyUp={this.changedNoteComments} type="text" placeholder="Notes"/><br/>
+                                    <input type="submit" value="Update"/>
                                 </form>
-                            </li>
+                            
+                            </div>
                         }
                     )
                 }
-            </ul>
-            
         </div>
         )
     }
