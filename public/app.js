@@ -245,41 +245,26 @@ class App extends React.Component {
                 (thisNote, index) => {
                     return <div className="mapping">
                     {/* ====== DISPLAY EXISTING NOTES ====== */}
-            <div className="form-group" id="update-date">
-                <label for="update-date-label" className="col-form-label">
-                    <strong>Date: </strong>{thisNote.dated}
-                </label>
-            </div> 
-            <div className="form-group" id="update-title">
-                <label for="update-title-label" className="col-form-label">
-                    <strong>Title: </strong>{thisNote.title}
-                </label>     
-            </div>
-            <div className="form-group" id="update-lang">
-                <label for="update-lang-label" className="col-form-label">
-                    <strong>Language: </strong>{thisNote.codelanguage}
-                </label>
-            </div> 
-            <div className="form-group" id="update-cBlock">
-                <label for="update-cBlock-label" className="col-form-label">
+                    <strong>Date: </strong>{thisNote.dated}<br/>
+                    <strong>Title: </strong>{thisNote.title}<br/>
+                    <strong>Language: </strong>{thisNote.codelanguage}<br/>
                     <strong>Code Block: </strong>
-                    <code>{thisNote.codeblock}</code>
-                </label>
-            </div>
-                    
-            <div className="form-group" id="update-comments">
-                <label for="update-comments-label" className="col-form-label">
-                    <strong>Notes: </strong>{thisNote.comments} 
-                </label>
-            </div>
+                    <pre>
+                        <code className="language-javascript">
+                            {thisNote.codeblock}
+                        </code>
+                    </pre>
+                    <strong>Notes: </strong>{thisNote.comments}<br/>
+                
                 <button value={thisNote.id} onClick={this.deleteNote}>
                         Delete
                 </button>
+                <br/>
                         {/* ====== UPDATE FORM ====== */}
-                <button type="button" className="btn btn-primary" data-toggle="modal" data-target="updateModal">
+                <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#updateModal">
                         Edit
                 </button>
-            <div className="modal fade" id="updModal" tabindex="-1" aria-labelledby="updModalLabel" aria-hidden="true">
+            <div className="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
             <div className="modal-dialog">
             <div className="modal-content">
             <div className="modal-header">
@@ -294,20 +279,39 @@ class App extends React.Component {
             </div>
         <div className="modal-body">
                     <form id={thisNote.id} onSubmit={this.updateNote}>
-                        <div className="form-group" id="test">
-                    <label for="test-label" className="col-form-label">
-                        <strong>Test: </strong>
+                        <div className="form-group" id="updateDate">
+                    <label for="update-date-label" className="col-form-label">
+                        <strong>Date: </strong>
                     </label>
-                                <input className="form-control" onKeyUp={this.changedNoteDated} type="date" placeholder="Date"/>
+                                <input className="form-control" onKeyUp={this.changedNoteDated} type="date"/>
                                 </div>
-                                    <input className="form-control" onKeyUp={this.changedNoteTitle} type="text" placeholder="Title"/>
-                                    <input className="form-control" onKeyUp={this.changedNoteCodeLanguage} type="text" placeholder="Language"/>
+                                 <div className="form-group" id="updateTitle">
+                    <label for="update-title-label" className="col-form-label">
+                        <strong>Title: </strong>
+                    </label>
+                                    <input className="form-control" onKeyUp={this.changedNoteTitle} type="text"/>
+                                    </div>
+                                     <div className="form-group" id="updateLang">
+                    <label for="update-lang-label" className="col-form-label">
+                        <strong>Language: </strong>
+                    </label>
+                                    <input className="form-control" onKeyUp={this.changedNoteCodeLanguage} type="text" />
+                                    </div> <div className="form-group" id="update-cBlock">
+                    <label for="update-cBlock-label" className="col-form-label">
+                        <strong>Code Block: </strong>
+                    </label>
                                 <pre>
                                     <code className="language-javascript">
-                                        <textarea className="form-control" onKeyUp={this.changedNoteCodeBlock} type="text" placeholder="Code"/>
+                                        <textarea className="form-control" onKeyUp={this.changedNoteCodeBlock} type="text"/>
                                     </code>
                                 </pre>
-                                    <textarea className="form-control" onKeyUp={this.changedNoteComments} type="text" placeholder="Notes"/>
+                                </div>
+                                 <div className="form-group" id="updateComments">
+                    <label for="update-comments-label" className="col-form-label">
+                        <strong>Notes: </strong>
+                    </label>
+                                    <textarea className="form-control" onKeyUp={this.changedNoteComments} type="text" />
+                                    </div>
                                     <input type="submit" value="Update"/>
                                 </form>
                             </div>
