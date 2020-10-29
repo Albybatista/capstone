@@ -174,10 +174,10 @@ class App extends React.Component {
         <h2>Create Note</h2>
             {/* ====== CREATE FORM ====== */}
             {/* <!-- Button trigger modal --> */}
-        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#createModal">
                 Create
             </button>
-        <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
             <div className="modal-dialog">
             <div className="modal-content">
             <div className="modal-header">
@@ -185,9 +185,7 @@ class App extends React.Component {
                 Add a Note
             </h5>
         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">
-                    &times;
-                </span>
+                <span aria-hidden="true">&times;</span>
         </button>
             </div>
         <div className="modal-body">
@@ -222,7 +220,7 @@ class App extends React.Component {
                 <textarea className="form-control" onKeyUp={this.addNoteCodeBlock} type="text" />
                 </div>
                 <div className="form-group" id="create-notes">
-                    <label for="create-comments-label" class="col-form-label">    
+                    <label for="create-comments-label" className="col-form-label">    
                         <strong>Notes: </strong>
                     </label>
                 <textarea className="form-control" onKeyUp={this.addNoteComments} type="text" />
@@ -232,7 +230,7 @@ class App extends React.Component {
         </div>
             <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">
-                    Close
+                Close
                 </button>
         <button type="button" className="btn btn-primary">
             Submit
@@ -241,37 +239,89 @@ class App extends React.Component {
         </div>
     </div>
 </div>
-            <h2>List of notes</h2>
-                {
-                    this.state.notes.map(
-                        (thisNote, index) => {
-                            return <div>
-                            {/* ====== DISPLAY EXISTING NOTES ====== */}
-                            <strong>Date: </strong>{thisNote.dated} 
-                            <strong>Title: </strong>{thisNote.title} 
-                            <strong>Language: </strong>{thisNote.codelanguage} 
-                            <strong>Code Block: </strong>
-                            <code>{thisNote.codeblock}</code>
-                            
-                            <strong>Notes: </strong>{thisNote.comments} 
-
-                                <button value={thisNote.id} onClick={this.deleteNote}>
-                                    Delete
-                                </button>
-                                {/* ====== UPDATE FORM ====== */}
-                                <form id={thisNote.id} onSubmit={this.updateNote}>
-                                    <input onKeyUp={this.changedNoteDated} type="date" placeholder="Date"/>
-                                    <input onKeyUp={this.changedNoteTitle} type="text" placeholder="Title"/>
-                                    <input onKeyUp={this.changedNoteCodeLanguage} type="text" placeholder="Language"/>
+    <h2>List of notes</h2>
+        {
+            this.state.notes.map(
+                (thisNote, index) => {
+                    return <div className="mapping">
+                    {/* ====== DISPLAY EXISTING NOTES ====== */}
+            <div className="form-group" id="update-date">
+                <label for="update-date-label" className="col-form-label">
+                    <strong>Date: </strong>{thisNote.dated}
+                </label>
+            </div> 
+            <div className="form-group" id="update-title">
+                <label for="update-title-label" className="col-form-label">
+                    <strong>Title: </strong>{thisNote.title}
+                </label>     
+            </div>
+            <div className="form-group" id="update-lang">
+                <label for="update-lang-label" className="col-form-label">
+                    <strong>Language: </strong>{thisNote.codelanguage}
+                </label>
+            </div> 
+            <div className="form-group" id="update-cBlock">
+                <label for="update-cBlock-label" className="col-form-label">
+                    <strong>Code Block: </strong>
+                    <code>{thisNote.codeblock}</code>
+                </label>
+            </div>
+                    
+            <div className="form-group" id="update-comments">
+                <label for="update-comments-label" className="col-form-label">
+                    <strong>Notes: </strong>{thisNote.comments} 
+                </label>
+            </div>
+                <button value={thisNote.id} onClick={this.deleteNote}>
+                        Delete
+                </button>
+                        {/* ====== UPDATE FORM ====== */}
+                <button type="button" className="btn btn-primary" data-toggle="modal" data-target="updateModal">
+                        Edit
+                </button>
+            <div className="modal fade" id="updModal" tabindex="-1" aria-labelledby="updModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+            <div className="modal-content">
+            <div className="modal-header">
+            <h5 className="modal-title" id="updateFormModal">
+                Edit Note
+            </h5>
+        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">
+                    &times;
+                </span>
+        </button>
+            </div>
+        <div className="modal-body">
+                    <form id={thisNote.id} onSubmit={this.updateNote}>
+                        <div className="form-group" id="test">
+                    <label for="test-label" className="col-form-label">
+                        <strong>Test: </strong>
+                    </label>
+                                <input className="form-control" onKeyUp={this.changedNoteDated} type="date" placeholder="Date"/>
+                                </div>
+                                    <input className="form-control" onKeyUp={this.changedNoteTitle} type="text" placeholder="Title"/>
+                                    <input className="form-control" onKeyUp={this.changedNoteCodeLanguage} type="text" placeholder="Language"/>
                                 <pre>
-                                    <code clasName="language-javascript">
-                                        <textarea onKeyUp={this.changedNoteCodeBlock} type="text" placeholder="Code"/>
+                                    <code className="language-javascript">
+                                        <textarea className="form-control" onKeyUp={this.changedNoteCodeBlock} type="text" placeholder="Code"/>
                                     </code>
                                 </pre>
-                                    <textarea onKeyUp={this.changedNoteComments} type="text" placeholder="Notes"/>
+                                    <textarea className="form-control" onKeyUp={this.changedNoteComments} type="text" placeholder="Notes"/>
                                     <input type="submit" value="Update"/>
                                 </form>
-                            
+                            </div>
+                            <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+        <button type="button" className="btn btn-primary">
+            Save
+        </button>
+            </div>
+        </div>
+    </div>
+</div>
                             </div>
                         }
                     )
