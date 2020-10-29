@@ -12,3 +12,17 @@ CREATE TABLE notes(
     codeBlock text,
     comments text
 );
+
+--CREATE TABLE
+CREATE TABLE tocode(
+    id SERIAL,
+    title text,
+    duedate text
+);
+
+--CREATE TABLE
+CREATE TABLE tolearn(
+    id SERIAL,
+    title text,
+    duedate text
+);
