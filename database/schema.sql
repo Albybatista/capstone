@@ -4,26 +4,34 @@ INSERT INTO
   notes
     ( dated, title, codeLanguage, codeBlock, comments)
 VALUES
-    ('08/20/2020', 'React Lesson', 'javascript', 'class App extends React.Component { }', 'this is how we set the class of a basic component where we then add a render inside the curly braces');
+    ('08/20/2020', 'HTML Paragraph', 'HTML', '<p>This is a paragraph tag. Write away!', 'Rendering a block of text using a paragraph tag');
 INSERT INTO
   notes
     ( dated, title, codeLanguage, codeBlock, comments)
 VALUES
-    ('08/20/2020', 'React Lesson', 'javascript', 'class App extends React.Component {}', 'this is how we set the class of a basic component where we then add a render inside the curly braces');
+    ('03/30/2020', 'CSS Positioning', 'CSS', 
+    '.square {
+    position: absolute;
+    top: 150px;
+    left: 50px;
+    }', 'Positioning the square class'
+);
 INSERT INTO 
   notes
     ( dated, title, codeLanguage, codeBlock, comments)
 VALUES
-    ('08/20/2020', 'React Lesson', 'javascript', 'class App extends React.Component {}', 'this is how we set the class of a basic component where we then add a render inside the curly braces');
+    ('04/11/2020', 'HTML Headers', 'html', '<h1>Welcome!</h1>', 'Creating a big header in HTML');
 INSERT INTO
   notes
     ( dated, title, codeLanguage, codeBlock, comments)
 VALUES
-    ('08/20/2020', 'React Lesson', 'javascript', 'class App extends React.Component {}', 'this is how we set the class of a basic component where we then add a render inside the curly braces');
+    ('11/01/2020', 'Sort Method', 'javascript', 
+    'const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    fruits.sort();', 'basic javascript sorting method');
+
 
 
 -- INSERT FOR TO CODE LIST
-
 INSERT INTO
   tocode
     ( title, duedate)
@@ -35,14 +43,15 @@ INSERT INTO
 VALUES
     ('Rock Paper Scissors','02/10/2021');
 
--- INSERT FOR TO LEARN LIST
 
+
+-- INSERT FOR TO LEARN LIST
 INSERT INTO
   tolearn
     ( title, duedate)
 VALUES
     ('Python','06/19/2021');
-    INSERT INTO
+INSERT INTO
   tolearn
     ( title, duedate)
 VALUES

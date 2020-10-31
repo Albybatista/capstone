@@ -4,6 +4,13 @@ CREATE DATABASE scriven;
 -- \c scriven;
 
 --CREATE TABLE
+CREATE TABLE tolearn(
+    id SERIAL,
+    username text,
+    user_password text
+);
+
+--CREATE TABLE
 CREATE TABLE notes(
     id SERIAL,
     dated text,

@@ -1,6 +1,9 @@
+
+
 class App extends React.Component {
     state = {
-        notes: []
+        notes: [],
+        showCard: false
     }
 
     componentDidMount = () => {
@@ -144,6 +147,14 @@ class App extends React.Component {
         });
     }
 
+
+    //CARD TOGGLE
+    cardToggle = (event) => {
+      this.setState({
+          showCard: !this.state.showCard
+        });
+    }
+
     // ==========================================
     // SHOW EVERYTHING ON THE WEBPAGE LIKE SO -- 
     // ==========================================
@@ -151,10 +162,10 @@ class App extends React.Component {
         return(
          <div className="all-body">
              {/* ====== NAVBAR ====== */}
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a className="navbar-brand" href="#">
-                    <img src="" width="30" height="30" className="d-inline-block align-top" alt="" loading="lazy"/>
-                    <strong> Scriven</strong>
+                    <i className="fas fa-laptop-code"></i>
+                    <strong>  Scriven</strong>
                 </a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -167,16 +178,29 @@ class App extends React.Component {
                     <li className="nav-item active">
                         <a className="nav-link" href="#">Sign In<span className="sr-only">(current)</span></a>
                     </li>
-                    </ul>
-                </div>
-            </nav>
-             
-        <h2>Create Note</h2>
-            {/* ====== CREATE FORM ====== */}
-            {/* <!-- Button trigger modal --> */}
+                    <li className="createbtn">
+                        {/* <!-- Button trigger modal --> */}
         <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#createModal">
                 Create
             </button>
+            
+            
+                    </li>
+                     &nbsp;
+                    {/* SEARCH BAR */}
+                    <li className="searchbtn">
+        <form className="form-inline">
+            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+            <button className="btn btn-success my-2 my-sm-0" type="submit">
+                Search
+            </button>
+        </form>
+                    </li>
+                    </ul>
+                </div>
+            </nav>
+            {/* ====== CREATE FORM ====== */}
+            
         <div className="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
             <div className="modal-dialog">
             <div className="modal-content">
@@ -211,6 +235,12 @@ class App extends React.Component {
                     <option>HTML</option>
                     <option>CSS</option>
                     <option>JavaScript</option>
+                    <option>JSON</option>
+                    <option>PHP</option>
+                    <option>Python</option>
+                    <option>Sass</option>
+                    <option>Scss</option>
+                    <option>Markdown</option>
                 </select>
                 </div>
                 <div className="form-group" id="create-cBlock">
@@ -225,45 +255,67 @@ class App extends React.Component {
                     </label>
                 <textarea className="form-control" onKeyUp={this.addNoteComments} type="text" />
                 </div>
-                <input type="submit" value="Create Note"/>
-            </form>
-        </div>
-            <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">
+                <div className="modal-footer">
+                <button type="submit" className="btn btn-secondary" data-dismiss="modal">
                 Close
                 </button>
-        <button type="button" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary" data-dismiss="modal" aria-label="Close">
             Submit
         </button>
             </div>
+            </form>
+        </div>
+            
         </div>
     </div>
 </div>
-    <h2>List of notes</h2>
+    <br/>
+    <hr></hr>
+    <h2 className="text-center">Notes</h2>
+    <hr></hr>
+    
         {
             this.state.notes.map(
                 (thisNote, index) => {
                     return <div className="mapping">
                     {/* ====== DISPLAY EXISTING NOTES ====== */}
-                    <strong>Date: </strong>{thisNote.dated}<br/>
-                    <strong>Title: </strong>{thisNote.title}<br/>
+            <div className="tilestogether">
+                <div className="tileforcards">
+                <h4 className="tilecard-title">
+                    {/* <strong>Date: </strong> */}
+                    {thisNote.dated}<br/>
+                    {/* <strong>Title: </strong> */}
+                    {thisNote.title}<br/>
+                    </h4>
+                    <div className="bar">
+                        <div className="emptybar">
+                    </div>
+                    <div className="filledbar">
+                    </div>
+                    
                     <strong>Language: </strong>{thisNote.codelanguage}<br/>
                     <strong>Code Block: </strong>
-                    <pre>
-                        <code className="language-javascript">
-                            {thisNote.codeblock}
-                        </code>
-                    </pre>
+<pre><code className="language-javascript">
+{thisNote.codeblock}</code></pre>
                     <strong>Notes: </strong>{thisNote.comments}<br/>
                 
-                <button value={thisNote.id} onClick={this.deleteNote}>
-                        Delete
+                <button className="btn btn-danger fas fa-times" value={thisNote.id} onClick={this.deleteNote} id="deletecardbtn">
                 </button>
-                <br/>
-                        {/* ====== UPDATE FORM ====== */}
+                {/* ===== EDIT FORM BUTTON ===== */}
                 <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#updateModal">
                         Edit
                 </button>
+                </div>
+    <div className="circle">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+      {/* <circle className="stroke" cx="60" cy="60" r="50"/> */}
+    </svg>
+    </div>
+</div>
+</div>
+                <br/>
+                        {/* ====== UPDATE FORM ====== */}
+                       
             <div className="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
             <div className="modal-dialog">
             <div className="modal-content">
@@ -278,50 +330,57 @@ class App extends React.Component {
         </button>
             </div>
         <div className="modal-body">
-                    <form id={thisNote.id} onSubmit={this.updateNote}>
-                        <div className="form-group" id="updateDate">
+            <form id={thisNote.id} onSubmit={this.updateNote}>
+                <div className="form-group" id="updateDate">
                     <label for="update-date-label" className="col-form-label">
                         <strong>Date: </strong>
                     </label>
-                                <input className="form-control" onKeyUp={this.changedNoteDated} type="date"/>
-                                </div>
-                                 <div className="form-group" id="updateTitle">
+                            <input className="form-control" onKeyUp={this.changedNoteDated} type="date"/>
+                        </div>
+                        <div className="form-group" id="updateTitle">
                     <label for="update-title-label" className="col-form-label">
                         <strong>Title: </strong>
                     </label>
-                                    <input className="form-control" onKeyUp={this.changedNoteTitle} type="text"/>
-                                    </div>
-                                     <div className="form-group" id="updateLang">
+                        <input className="form-control" onKeyUp={this.changedNoteTitle} type="text"/>
+                        </div>
+                        <div className="form-group" id="updateLang">
                     <label for="update-lang-label" className="col-form-label">
                         <strong>Language: </strong>
                     </label>
-                                    <input className="form-control" onKeyUp={this.changedNoteCodeLanguage} type="text" />
-                                    </div> <div className="form-group" id="update-cBlock">
+                        <select className="form-control" onKeyUp={this.changedNoteCodeLanguage}>
+                            <option></option>
+                            <option>HTML</option>
+                            <option>CSS</option>
+                            <option>JavaScript</option>
+                            <option>JSON</option>
+                            <option>PHP</option>
+                            <option>Python</option>
+                            <option>Sass</option>
+                            <option>Scss</option>
+                            <option>Markdown</option>
+                        </select>
+                        </div>
+                        <div className="form-group" id="update-cBlock">
                     <label for="update-cBlock-label" className="col-form-label">
                         <strong>Code Block: </strong>
                     </label>
-                                <pre>
-                                    <code className="language-javascript">
-                                        <textarea className="form-control" onKeyUp={this.changedNoteCodeBlock} type="text"/>
-                                    </code>
-                                </pre>
-                                </div>
-                                 <div className="form-group" id="updateComments">
+<pre><code className="language-javascript"><textarea className="form-control" onKeyUp={this.changedNoteCodeBlock} type="text"/></code></pre>
+                        </div>
+                            <div className="form-group" id="updateComments">
                     <label for="update-comments-label" className="col-form-label">
                         <strong>Notes: </strong>
                     </label>
-                                    <textarea className="form-control" onKeyUp={this.changedNoteComments} type="text" />
-                                    </div>
-                                    <input type="submit" value="Update"/>
-                                </form>
+                        <textarea className="form-control" onKeyUp={this.changedNoteComments} type="text" />
                             </div>
-                            <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">
-                    Close
-                </button>
-        <button type="button" className="btn btn-primary">
-            Save
-        </button>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">
+                                    Close
+                        </button>
+                        <button className="btn btn-primary" type="submit" data-dismiss="modal" aria-label="Close">
+                            Save
+                        </button>
+            </div>
+            </form>
             </div>
         </div>
     </div>
