@@ -1,5 +1,4 @@
 
-
 class App extends React.Component {
     state = {
         notes: [],
@@ -165,7 +164,7 @@ class App extends React.Component {
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a className="navbar-brand" href="#">
                     <i className="fas fa-laptop-code"></i>
-                    <strong>  Scriven</strong>
+                    <strong className="navbarName">  Scriven</strong>
                 </a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -201,7 +200,7 @@ class App extends React.Component {
             </nav>
             {/* ====== CREATE FORM ====== */}
             
-        <div className="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+        <div className="modal fade" id="createModal" tabIndex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
             <div className="modal-dialog">
             <div className="modal-content">
             <div className="modal-header">
@@ -259,7 +258,8 @@ class App extends React.Component {
                 <button type="submit" className="btn btn-secondary" data-dismiss="modal">
                 Close
                 </button>
-        <button type="submit" className="btn btn-primary" data-dismiss="modal" aria-label="Close">
+        <button type="submit" className="btn btn-primary" >
+            {/* data-dismiss="modal" aria-label="Close" */}
             Submit
         </button>
             </div>
@@ -270,7 +270,7 @@ class App extends React.Component {
     </div>
 </div>
     <br/>
-    <hr></hr>
+  
     <h2 className="text-center">Notes</h2>
     <hr></hr>
     
@@ -279,44 +279,58 @@ class App extends React.Component {
                 (thisNote, index) => {
                     return <div className="mapping">
                     {/* ====== DISPLAY EXISTING NOTES ====== */}
-            <div className="tilestogether">
-                <div className="tileforcards">
-                <h4 className="tilecard-title">
-                    {/* <strong>Date: </strong> */}
-                    {thisNote.dated}<br/>
-                    {/* <strong>Title: </strong> */}
-                    {thisNote.title}<br/>
-                    </h4>
-                    <div className="bar">
-                        <div className="emptybar">
-                    </div>
-                    <div className="filledbar">
-                    </div>
-                    
-                    <strong>Language: </strong>{thisNote.codelanguage}<br/>
-                    <strong>Code Block: </strong>
-<pre><code className="language-javascript">
-{thisNote.codeblock}</code></pre>
-                    <strong>Notes: </strong>{thisNote.comments}<br/>
-                
-                <button className="btn btn-danger fas fa-times" value={thisNote.id} onClick={this.deleteNote} id="deletecardbtn">
+            <div className="card" id="cardsizing">
+                <div className="row no-gutters">
+                    <div className="col-md-4">
+                        <div className="card-header">
+                            {thisNote.dated}
+                            {thisNote.title}
+                            <button className="btn btn-danger fas fa-trash-alt" value={thisNote.id} onClick={this.deleteNote} id="deletecardbtn">
                 </button>
-                {/* ===== EDIT FORM BUTTON ===== */}
-                <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#updateModal">
+                            
+</div>
+
+<div className="col-md-8">
+                <div className="card-body">
+                <h4 className="card-title">
+                    {/* <strong>Date: </strong> */}
+                    {/* {thisNote.dated} */}
+                    {/* <strong>Title: </strong> */}
+                    {thisNote.title}
+                    </h4>
+                    <pre className="card-text">
+                    {/* <strong>Code Block: </strong> */}
+                   
+                        <code className="language-javascript">
+                            {thisNote.codeblock}
+                        </code>
+                    </pre>
+                    
+                    <p className="card-text"><small className="text-muted">
+                    {/* <strong>Language: </strong> */}
+                    {thisNote.codelanguage}</small>
+                    </p>
+                    
+                    <p className="card-text">
+                        {/* <strong>Notes: </strong> */}
+                        {thisNote.comments}</p>
+                        {/* ===== EDIT FORM BUTTON ===== */}
+                <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#updateModal" id="editBtn">
                         Edit
                 </button>
+                    </div>   
+                    </div>
+                
+                
                 </div>
-    <div className="circle">
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-      {/* <circle className="stroke" cx="60" cy="60" r="50"/> */}
-    </svg>
-    </div>
+
 </div>
 </div>
+
                 <br/>
                         {/* ====== UPDATE FORM ====== */}
                        
-            <div className="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+            <div className="modal fade" id="updateModal" tabIndex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
             <div className="modal-dialog">
             <div className="modal-content">
             <div className="modal-header">
@@ -376,7 +390,8 @@ class App extends React.Component {
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">
                                     Close
                         </button>
-                        <button className="btn btn-primary" type="submit" data-dismiss="modal" aria-label="Close">
+                        <button className="btn btn-primary" type="submit" >
+                            {/* data-dismiss="modal" aria-label="Close" */}
                             Save
                         </button>
             </div>

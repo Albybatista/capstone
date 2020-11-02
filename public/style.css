@@ -4,12 +4,35 @@
     background-repeat: no-repeat;
 } */
 
-
-
-.fa-laptop-code {
-    color: rgb(29, 174, 109)
-}
-
 /* .everything-enclosed {
     background: #343a40;
 } */
+
+.fa-laptop-code {
+    color: rgb(16, 176, 104);
+}
+
+#cardsizing {
+    max-width: 540px;
+}
+
+.col-md-8 {
+    background: #343a40;
+    color: rgb(29, 174, 109);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: rgb(18, 101, 64);
+    color: wheat; */
+}
+
+.navbarName {
+    color: wheat;
+}
+
+#editBtn {
+    display: flex;
+    justify-self: end;
+}
