@@ -277,7 +277,7 @@ class App extends React.Component {
                             <strong><h4>{thisNote.dated}</h4></strong>
                             {/* ===== EDIT FORM BUTTON ===== */}
                             <div className="headerBtns">
-                <button type="button" className="btn btn-primary fa fa-edit" data-toggle="modal" data-target="#updateModal" id="editBtn">       
+                <button type="button" className="btn btn fa fa-edit" data-toggle="modal" data-target="#updateModal" id="editBtn">       
                 </button>
                 &nbsp;
                     <button className="btn btn-danger fas fa-trash-alt" value={thisNote.id} onClick={this.deleteNote} id="deletecardbtn">
