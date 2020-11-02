@@ -17,11 +17,11 @@
     /* display: flex;
     justify-content: space-between; */
     background-color: rgb(18, 101, 64) !important;
-    color: wheat;
+    color: white;
 }
 
 .navbarName {
-    color: wheat;
+    color: white;
 }
 
 #editBtn {
@@ -39,4 +39,11 @@
 
 .mapping {
     padding: 3%;
+}
+.card-title {
+    color: wheat;
+}
+
+#commentsInCards {
+    color: white;
 }

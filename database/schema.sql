@@ -4,7 +4,7 @@ INSERT INTO
   notes
     ( dated, title, codeLanguage, codeBlock, comments)
 VALUES
-    ('08/20/2020', 'HTML Paragraph', 'HTML', '<p>This is a paragraph tag. Write away!', 'Rendering a block of text using a paragraph tag');
+    ('08/20/2020', 'HTML Paragraph', 'HTML', '<p>This is a paragraph tag. Write away!</p>', 'Rendering a block of text using a paragraph tag');
 INSERT INTO
   notes
     ( dated, title, codeLanguage, codeBlock, comments)
@@ -20,14 +20,14 @@ INSERT INTO
   notes
     ( dated, title, codeLanguage, codeBlock, comments)
 VALUES
-    ('04/11/2020', 'HTML Headers', 'html', '<h1>Welcome!</h1>', 'Creating a big header in HTML');
+    ('04/11/2020', 'HTML Headers', 'HTML', '<h1>Welcome!</h1>', 'Creating a big header in HTML');
 INSERT INTO
   notes
     ( dated, title, codeLanguage, codeBlock, comments)
 VALUES
-    ('11/01/2020', 'Sort Method', 'javascript', 
+    ('11/01/2020', 'Sort Method', 'JavaScript', 
     'const fruits = ["Banana", "Orange", "Apple", "Mango"];
-    fruits.sort();', 'basic javascript sorting method');
+    fruits.sort();', 'Basic JavaScript sorting method');
 
 
 

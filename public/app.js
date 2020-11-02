@@ -302,7 +302,7 @@ class App extends React.Component {
                             {thisNote.codeblock}
                         </code>
                     </pre>
-                    <p className="card-text">
+                    <p className="card-text" id="commentsInCards">
                         {/* <strong>Notes: </strong> */}
                         {thisNote.comments}</p>
                     </div>   
