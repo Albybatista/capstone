@@ -274,7 +274,7 @@ class App extends React.Component {
                     {/* ====== DISPLAY EXISTING NOTES ====== */}
             <div className="card" id="cardsizing">
                         <div className="card-header">
-                            <strong>{thisNote.dated}</strong>
+                            <strong><h4>{thisNote.dated}</h4></strong>
                             {/* ===== EDIT FORM BUTTON ===== */}
                             <div className="headerBtns">
                 <button type="button" className="btn btn-primary fa fa-edit" data-toggle="modal" data-target="#updateModal" id="editBtn">       
