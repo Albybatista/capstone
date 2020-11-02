@@ -35,7 +35,6 @@ class App extends React.Component {
                 this.setState({
                     notes: response.data
                 })
-                console.log(response.data);
             }
             
         )
@@ -69,7 +68,6 @@ class App extends React.Component {
         this.setState({
             newNoteComments: event.target.value
         });
-        console.log(event.target.value);
     }
 
 
@@ -133,7 +131,6 @@ class App extends React.Component {
         this.setState({
             updateNoteCodeLanguage: event.target.value
         });
-        console.log(event.target.value);
     }
     changedNoteCodeBlock = (event) => {
         this.setState({
@@ -182,8 +179,6 @@ class App extends React.Component {
         <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#createModal">
                 Create
             </button>
-            
-            
                     </li>
                      &nbsp;
                     {/* SEARCH BAR */}
@@ -265,12 +260,10 @@ class App extends React.Component {
             </div>
             </form>
         </div>
-            
         </div>
     </div>
 </div>
     <br/>
-  
     <h2 className="text-center">Notes</h2>
     <hr></hr>
     
@@ -280,56 +273,43 @@ class App extends React.Component {
                     return <div className="mapping">
                     {/* ====== DISPLAY EXISTING NOTES ====== */}
             <div className="card" id="cardsizing">
-                <div className="row no-gutters">
-                    <div className="col-md-4">
                         <div className="card-header">
-                            {thisNote.dated}
-                            {thisNote.title}
-                            <button className="btn btn-danger fas fa-trash-alt" value={thisNote.id} onClick={this.deleteNote} id="deletecardbtn">
+                            <strong>{thisNote.dated}</strong>
+                            {/* ===== EDIT FORM BUTTON ===== */}
+                            <div className="headerBtns">
+                <button type="button" className="btn btn-primary fa fa-edit" data-toggle="modal" data-target="#updateModal" id="editBtn">       
                 </button>
-                            
-</div>
-
-<div className="col-md-8">
+                &nbsp;
+                    <button className="btn btn-danger fas fa-trash-alt" value={thisNote.id} onClick={this.deleteNote} id="deletecardbtn">
+                    </button>
+                </div>         
+            </div>
+            <div className="cardTotal">
                 <div className="card-body">
-                <h4 className="card-title">
+                <h5 className="card-title">
                     {/* <strong>Date: </strong> */}
                     {/* {thisNote.dated} */}
                     {/* <strong>Title: </strong> */}
-                    {thisNote.title}
-                    </h4>
+                    <strong>{thisNote.title}</strong>
+                    </h5>
+                     <p className="card-text"><small className="text-muted">
+                    {/* <strong>Language: </strong> */}
+                    {thisNote.codelanguage}</small>
+                    </p>
                     <pre className="card-text">
                     {/* <strong>Code Block: </strong> */}
-                   
                         <code className="language-javascript">
                             {thisNote.codeblock}
                         </code>
                     </pre>
-                    
-                    <p className="card-text"><small className="text-muted">
-                    {/* <strong>Language: </strong> */}
-                    {thisNote.codelanguage}</small>
-                    </p>
-                    
                     <p className="card-text">
                         {/* <strong>Notes: </strong> */}
                         {thisNote.comments}</p>
-                        {/* ===== EDIT FORM BUTTON ===== */}
-                <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#updateModal" id="editBtn">
-                        Edit
-                </button>
                     </div>   
                     </div>
-                
-                
                 </div>
-
-</div>
-</div>
-
                 <br/>
                         {/* ====== UPDATE FORM ====== */}
-                       
             <div className="modal fade" id="updateModal" tabIndex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
             <div className="modal-dialog">
             <div className="modal-content">
@@ -378,7 +358,11 @@ class App extends React.Component {
                     <label for="update-cBlock-label" className="col-form-label">
                         <strong>Code Block: </strong>
                     </label>
-<pre><code className="language-javascript"><textarea className="form-control" onKeyUp={this.changedNoteCodeBlock} type="text"/></code></pre>
+                            <pre>
+                                <code className="language-javascript">
+                                    <textarea className="form-control" onKeyUp={this.changedNoteCodeBlock} type="text"/>
+                                </code>
+                            </pre>
                         </div>
                             <div className="form-group" id="updateComments">
                     <label for="update-comments-label" className="col-form-label">
@@ -394,7 +378,7 @@ class App extends React.Component {
                             {/* data-dismiss="modal" aria-label="Close" */}
                             Save
                         </button>
-            </div>
+                </div>
             </form>
             </div>
         </div>

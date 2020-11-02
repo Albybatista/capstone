@@ -1,31 +1,24 @@
-/* body {
-    background: url('https://images.unsplash.com/photo-1455849318743-b2233052fcff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')no-repeat center center fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-} */
-
-/* .everything-enclosed {
-    background: #343a40;
-} */
-
 .fa-laptop-code {
     color: rgb(16, 176, 104);
 }
 
 #cardsizing {
-    max-width: 540px;
+    
+    box-shadow: 10px 10px 10px rgb(122, 129, 126);
+    border-bottom: 10px;
+    
 }
 
-.col-md-8 {
+.cardTotal {
     background: #343a40;
     color: rgb(29, 174, 109);
 }
 
 .card-header {
-    display: flex;
-    justify-content: space-between;
-    /* background-color: rgb(18, 101, 64);
-    color: wheat; */
+    /* display: flex;
+    justify-content: space-between; */
+    background-color: rgb(18, 101, 64) !important;
+    color: wheat;
 }
 
 .navbarName {
@@ -35,4 +28,16 @@
 #editBtn {
     display: flex;
     justify-self: end;
+}
+.card {
+    box-shadow: rgb(18, 101, 64, .4);
+}
+
+.headerBtns {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mapping {
+    padding: 3%;
 }
