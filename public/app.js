@@ -168,12 +168,12 @@ class App extends React.Component {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
-                    <li className="nav-item active">
+                    {/* <li className="nav-item active">
                         <a className="nav-link" href="#">Register<span className="sr-only">(current)</span></a>
                     </li>
                     <li className="nav-item active">
                         <a className="nav-link" href="#">Sign In<span className="sr-only">(current)</span></a>
-                    </li>
+                    </li> */}
                     <li className="createbtn">
                         {/* <!-- Button trigger modal --> */}
         <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#createModal">
@@ -182,14 +182,14 @@ class App extends React.Component {
                     </li>
                      &nbsp;
                     {/* SEARCH BAR */}
-                    <li className="searchbtn">
+                    {/* <li className="searchbtn">
         <form className="form-inline">
             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
             <button className="btn btn-success my-2 my-sm-0" type="submit">
                 Search
             </button>
         </form>
-                    </li>
+                    </li> */}
                     </ul>
                 </div>
             </nav>
